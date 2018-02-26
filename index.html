@@ -23,10 +23,43 @@
 		var height = document.getElementsByTagName("svg")[0].getAttribute("height")
 
 		var summerData = []
-		d3.csv("summer.csv", function(data) {
-		   summerData = data.map(function(d) { return [ +d["Year"], +d["Country"], +d["Medal"] ]; });
-		   console.log(SummerData)
+		var medalCount = {
+			"data": {
+				"1992": {},
+				"1996": {},
+				"2000": {},
+				"2004": {},
+				"2008": {},
+				"2012": {}
+			}
+		}
+		d3.csv("summer.csv", function(d) {
+			if (d.Year >= 1992) {
+				return {
+					year: +d.Year,
+					country: d.Country,
+					medal: d.Medal
+				};
+			}
+		}, function(data) {
+			console.log(data)
+			data.forEach(function(d) {
+				if (d.medal == "Gold") {
+					if (medalCount.data[d.year][d.country] == undefined) {
+						medalCount.data[d.year][d.country] = 0
+					} else {
+						medalCount.data[d.year][d.country] += 1
+					}
+				}
+			});// forEach
+			data.forEach(function(d) {
+				if (d.medal == "Gold" && d.country == "USA") {
+					medalCount.data[d.year][d.country] += 1
+				}
+			});// forEach
+			console.log(medalCount)
 		});
+
 		// draw the equator line to the svg element
 		svg.append("line")
 		.attr("x1", 0)
