@@ -36,7 +36,7 @@
 		d3.csv("summer.csv", function(d) {
 			if (d.Year >= 1992) {
 				return {
-					year: +d.Year,
+					year: d.Year,
 					country: d.Country,
 					medal: d.Medal
 				};
@@ -50,11 +50,6 @@
 					} else {
 						medalCount.data[d.year][d.country] += 1
 					}
-				}
-			});// forEach
-			data.forEach(function(d) {
-				if (d.medal == "Gold" && d.country == "USA") {
-					medalCount.data[d.year][d.country] += 1
 				}
 			});// forEach
 			console.log(medalCount)
