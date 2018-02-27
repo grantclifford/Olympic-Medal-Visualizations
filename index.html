@@ -15,6 +15,9 @@
 	<svg height="500" width="800" id="svg"></svg>
 	<script>
 
+// csvsql --query "select country, medal, count(*) from summerData where Year > 1985 group by country, medal" summerData.csv > summerMedalData.csv
+// csvsql --query "select country, medal, count(*) from summerData where Year > 1985 group by country, medal" summerData.csv > winterMedalData.csv
+
 		// snag the svg element from outside the script tag
 		var svg = d3.select("#svg");
 
