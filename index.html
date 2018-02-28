@@ -11,7 +11,6 @@
 </head>
 
 <body>
-	<p> Visualize Data Here </p>
 	<svg height="500" width="800" id="svg"></svg>
 	<script>
 
@@ -36,32 +35,33 @@
 				"2012": {}
 			}
 		}
-		d3.csv("summer.csv", function(d) {
-			if (d.Year >= 1992) {
-				return {
-					year: +d.Year,
-					country: d.Country,
-					medal: d.Medal
-				};
-			}
-		}, function(data) {
-			console.log(data)
-			data.forEach(function(d) {
-				if (d.medal == "Gold") {
-					if (medalCount.data[d.year][d.country] == undefined) {
-						medalCount.data[d.year][d.country] = 0
-					} else {
-						medalCount.data[d.year][d.country] += 1
-					}
-				}
-			});// forEach
-			data.forEach(function(d) {
-				if (d.medal == "Gold" && d.country == "USA") {
-					medalCount.data[d.year][d.country] += 1
-				}
-			});// forEach
-			console.log(medalCount)
-		});
+        /* Buggy */
+		// d3.csv("summer.csv", function(d) {
+		// 	if (d.Year >= 1992) {
+		// 		return {
+		// 			year: +d.Year,
+		// 			country: d.Country,
+		// 			medal: d.Medal
+		// 		};
+		// 	}
+		// }, function(data) {
+		// 	console.log(data)
+		// 	data.forEach(function(d) {
+		// 		if (d.medal == "Gold") {
+		// 			if (medalCount.data[d.year][d.country] == undefined) {
+		// 				medalCount.data[d.year][d.country] = 0
+		// 			} else {
+		// 				medalCount.data[d.year][d.country] += 1
+		// 			}
+		// 		}
+		// 	});// forEach
+		// 	data.forEach(function(d) {
+		// 		if (d.medal == "Gold" && d.country == "USA") {
+		// 			medalCount.data[d.year][d.country] += 1
+		// 		}
+		// 	});// forEach
+		// 	console.log(medalCount)
+		// });
 
 		// draw the equator line to the svg element
 		svg.append("line")

@@ -11,70 +11,6 @@
 </head>
 
 <body>
-    <p> Visualize Data Here </p>
-    <!-- <svg height="500" width="800" id="svg"></svg> -->
-    <script id=>
-
-// csvsql --query "select country, medal, count(*) from summerData where Year > 1985 group by country, medal" summerData.csv > summerMedalData.csv
-// csvsql --query "select country, medal, count(*) from summerData where Year > 1985 group by country, medal" summerData.csv > winterMedalData.csv
-
-        // snag the svg element from outside the script tag
-        // var svg = d3.select("#svg");
-
-        // // get the height/width of the svg element as variables
-        // var width = document.getElementsByTagName("svg")[0].getAttribute("width");
-        // var height = document.getElementsByTagName("svg")[0].getAttribute("height");
-
-        // var summerData = []
-        // var medalCount = {
-        //  "data": {
-        //      "1992": {},
-        //      "1996": {},
-        //      "2000": {},
-        //      "2004": {},
-        //      "2008": {},
-        //      "2012": {}
-        //  }
-        // }
-        // d3.csv("summer.csv", function(d) {
-        //  if (d.Year >= 1992) {
-        //      return {
-        //          year: +d.Year,
-        //          country: d.Country,
-        //          medal: d.Medal
-        //      };
-        //  }
-        // }, function(data) {
-        //  console.log(data)
-        //  data.forEach(function(d) {
-        //      if (d.medal == "Gold") {
-        //          if (medalCount.data[d.year][d.country] == undefined) {
-        //              medalCount.data[d.year][d.country] = 0
-        //          } else {
-        //              medalCount.data[d.year][d.country] += 1
-        //          }
-        //      }
-        //  });// forEach
-        //  data.forEach(function(d) {
-        //      if (d.medal == "Gold" && d.country == "USA") {
-        //          medalCount.data[d.year][d.country] += 1
-        //      }
-        //  });// forEach
-        //  console.log(medalCount)
-        // });
-
-        // // draw the equator line to the svg element
-        // svg.append("line")
-        // .attr("x1", 0)
-        // .attr("y1", height/2)
-        // .attr("x2", width)
-        // .attr("y2", height/2)
-        // .attr("stroke", "black")
-        // .attr("stroke-width", 5)
-        // .attr("opacity", 0.25);
-
-    </script>
-
     <script id="GDPvMedals">
         var svgS = d3.select("body").append("svg")
         .attr("height", 400)
@@ -160,12 +96,7 @@
                 .attr("cy", yScaleW(+d.Medals))
                 .style("fill","black");
             })
-
-
         }
     </script>
 </body>
-
-
-
 </html>
