@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<style>
   svg { background-color: rgba(245,245,220, 0.9); display:block; margin:auto; font-family:Georgia; }
-  .title {text-align:center; font-size:36px; color:white;}
+  .title {text-align:center; font-size:100px; color:white; background-image:url("img/cool-blue.jpg");width:50%; display:block; margin-left:auto; margin-right:auto; margin-bottom:10px;}
   </style>
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
@@ -14,7 +14,7 @@
 <!-- Background Image Courtesy of : https://www.elegantthemes.com/blog/freebie-of-the-week/20-free-background-images-for-wordpress
  -->
  <!-- https://www.crafthubs.com/olympic-patterns/12831 -->
-<body background="img/background-blue-circles.jpg">
+<body background="img/background-blue-circles.jpg" width="100%">
 	<p class="title"> What Makes A Country Great? </p>
 	<div id="container">
         <svg height="1000" width="1000" id="svg"></svg>
@@ -836,7 +836,7 @@ d3.csv("nationLatitudeData.csv", function(latData){
             .attr("x", 500)
             .attr("y", 50)
             .style("text-anchor", "middle")
-            .text("Summer")
+            .text("Summer Medals Earned VS GDP Per Capita")
             .style("font-size", "36px");
 
             svgS.append("text")
@@ -905,7 +905,7 @@ d3.csv("nationLatitudeData.csv", function(latData){
             .attr("x", 500)
             .attr("y", 50)
             .style("text-anchor", "middle")
-            .text("Winter")
+            .text("Winter Medals Earned VS GDP Per Capita")
             .style("font-size", "36px");
 
             svgW.append("text")
