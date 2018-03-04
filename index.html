@@ -6,13 +6,15 @@
 	<meta charset="UTF-8">
 	<style>
   svg { background-color: #f5f5dc; display:block; margin:auto; }
-  .title {text-align:center; font-size:24px; color:white;}
+  .title {text-align:center; font-size:36px; color:white; background-color:rgba(0,0,255, .9);}
   </style>
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 
-<!-- Background Image Courtesy of : https://www.elegantthemes.com/blog/freebie-of-the-week/20-free-background-images-for-wordpress -->
-<body background="img/background-blue-circles.jpg">
+<!-- Background Image Courtesy of : https://www.elegantthemes.com/blog/freebie-of-the-week/20-free-background-images-for-wordpress
+ -->
+ <!-- https://www.crafthubs.com/olympic-patterns/12831 -->
+<body background="img/olympic-logo.png">
 	<p class="title"> What Makes A Country Great? </p>
 	<div id="container">
 		<svg height="800" width="700" id="svg"></svg>
@@ -286,16 +288,19 @@
 
     <script id="GDPvMedals">
 
+        var height2 = 600;
+        var width2  = 600;
+
         d3.select("body").append("br");
         var svgS = d3.select("body").append("svg")
-        .attr("height", 400)
-        .attr("width", 600)
+        .attr("height", height2)
+        .attr("width", width2)
         .style("background-color", "#ff6600");
 
         d3.select("body").append("br");
         var svgW = d3.select("body").append("svg")
-        .attr("height", 400)
-        .attr("width", 600)
+        .attr("height", height2)
+        .attr("width", width2)
         .style("background-color", "#3366ff");
 
         d3.queue()
@@ -331,16 +336,16 @@
 
             var xScale = d3.scaleLinear()
             .domain([0,xMax])
-            .range([100,500]);
+            .range([100,width2-100]);
 
             var yScaleS = d3.scaleLinear()
             .domain([0, yMaxS])
-            .range([300,100]);
+            .range([height2-100,100]);
 
             var xAxis = d3.axisBottom(xScale);
             var yAxis = d3.axisLeft(yScaleS);
 
-            svgS.append("g").call(xAxis).attr("transform","translate(0,300)");
+            svgS.append("g").call(xAxis).attr("transform","translate(0,500)");
             svgS.append("g").call(yAxis).attr("transform","translate(100,0)");
 
             sData.forEach(function (d, i) {
@@ -389,17 +394,18 @@
             .attr("y", 50)
             .style("text-anchor", "middle")
             .text("Winter Medals Earned vs. GDP");
+
             var yMaxW = d3.max(wData, function (d) {return +d.Medals});
 
 
             var yScaleW = d3.scaleLinear()
             .domain([0, yMaxW])
-            .range([300,100]);
+            .range([height2-100,100]);
 
             var yAxisW = d3.axisLeft(yScaleW);
 
 
-            svgW.append("g").call(xAxis).attr("transform","translate(0,300)");
+            svgW.append("g").call(xAxis).attr("transform","translate(0,500)");
             svgW.append("g").call(yAxisW).attr("transform","translate(100,0)");
 
             wData.forEach(function (d, i) {
