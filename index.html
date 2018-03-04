@@ -5,75 +5,79 @@
 	<title> 3300 P1</title>
 	<meta charset="UTF-8">
 	<style>
-  svg { background-color: #f5f5dc; }
+  svg { background-color: #f5f5dc; display:block; margin:auto; }
+  .title {text-align:center; font-size:36px; color:white; background-color:rgba(0,0,255, .9);}
   </style>
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 
-<body>
-	<p> Visualize Data Here </p>
+<!-- Background Image Courtesy of : https://www.elegantthemes.com/blog/freebie-of-the-week/20-free-background-images-for-wordpress
+ -->
+ <!-- https://www.crafthubs.com/olympic-patterns/12831 -->
+<body background="img/olympic-logo.png">
+	<p class="title"> What Makes A Country Great? </p>
 	<div id="container">
-		<svg height="1000" width="1000" id="svg"></svg>
-	</div>
-	<script>
+        <svg height="1000" width="1000" id="svg"></svg>
+    </div>
+    <script>
 
-		// snag the svg element from outside the script tag
-		var svg = d3.select("#svg");
+        // snag the svg element from outside the script tag
+        var svg = d3.select("#svg");
 
-		// get the height/width of the svg element as variables
-		var width = document.getElementsByTagName("svg")[0].getAttribute("width");
-		var height = document.getElementsByTagName("svg")[0].getAttribute("height");
+        // get the height/width of the svg element as variables
+        var width = document.getElementsByTagName("svg")[0].getAttribute("width");
+        var height = document.getElementsByTagName("svg")[0].getAttribute("height");
 
-		// json obj to hold all of the read-in files
-		var totalMedals = new Object();
+        // json obj to hold all of the read-in files
+        var totalMedals = new Object();
 
-		// read in the summerMedalData csv file
-		d3.csv("summerMedalData.csv", function(data) {
-			data.forEach(function(d) {
-				totalMedals[d.country] = {
-					count: Number(d["count(*)"])
-				};
-			});
-		});
+        // read in the summerMedalData csv file
+        d3.csv("summerMedalData.csv", function(data) {
+            data.forEach(function(d) {
+                totalMedals[d.country] = {
+                    count: Number(d["count(*)"])
+                };
+            });
+        });
 
-		// read in the winterMedalData csv file and add to summer
-		d3.csv("winterMedalData.csv", function(data) {
-			data.forEach(function(d) {
-				if (totalMedals[d.country] != undefined) {
-					totalMedals[d.country].count += Number(d["count(*)"])
-				}
-			});
+        // read in the winterMedalData csv file and add to summer
+        d3.csv("winterMedalData.csv", function(data) {
+            data.forEach(function(d) {
+                if (totalMedals[d.country] != undefined) {
+                    totalMedals[d.country].count += Number(d["count(*)"])
+                }
+            });
 
-			console.log(totalMedals);
+            console.log(totalMedals);
 
-			// here, subarr is an intermediary array to hold medal counts, which will be then be sorted
-			subarr = []
-			for (key in totalMedals) {
-				subarr.push(totalMedals[key].count)
-			}
+            // here, subarr is an intermediary array to hold medal counts, which will be then be sorted
+            subarr = []
+            for (key in totalMedals) {
+                subarr.push(totalMedals[key].count)
+            }
 
-			// sort the medal counts and then extract top 10
-			subarr.sort(function(a,b) {
-				return b - a
-			});
+            // sort the medal counts and then extract top 10
+            subarr.sort(function(a,b) {
+                return b - a
+            });
 
-			// top ten medal counts with their respective country
-			var tenCounts = subarr.slice(0, 10)
-			var tenCountries = []
+            // top ten medal counts with their respective country
+            var tenCounts = subarr.slice(0, 10)
+            var tenCountries = []
 
-			tenCounts.forEach(function(x) {
-				for (key in totalMedals) {
-					if(totalMedals[key].count == x) {
-						tenCountries.push(key)
-					}
-				}
-			})
+            tenCounts.forEach(function(x) {
+                for (key in totalMedals) {
+                    if(totalMedals[key].count == x) {
+                        tenCountries.push(key)
+                    }
+                }
+            })
 
-			console.log(tenCounts);
-			console.log(tenCountries);
+            console.log(tenCounts);
+            console.log(tenCountries);
 
-			// height of each bar scale
-			var pedScale = d3.scaleLinear()
+            // height of each bar scale
+            var pedScale = d3.scaleLinear()
       .domain([tenCounts[9], tenCounts[0]])
       .range([100, 400]);
 
@@ -339,6 +343,177 @@
 		}); // end of callback
 
 	</script>
+
+    <script id="GDPvMedals">
+
+        var height2 = 600;
+        var width2  = 600;
+
+        d3.select("body").append("br");
+        var svgS = d3.select("body").append("svg")
+        .attr("height", height2)
+        .attr("width", width2)
+        .style("background-color", "#ff6600");
+
+        d3.select("body").append("br");
+        var svgW = d3.select("body").append("svg")
+        .attr("height", height2)
+        .attr("width", width2)
+        .style("background-color", "#3366ff");
+
+        d3.queue()
+        .defer(d3.csv, "winterGDPMedalData.csv")
+        .defer(d3.csv, "summerGDPMedalData.csv")
+        .await(showGraph);
+
+        function showGraph(error, wData, sData) {
+
+            wData.sort(function(a, b){ return b.Medals - a.Medals});
+            sData.sort(function(a, b){ return b.Medals - a.Medals});
+
+            console.log("winter:" + wData.slice(0,10).map(function (d) {return d.Country}));
+            console.log("summer:" + sData.slice(0,10).map(function (d) {return d.Country}));
+            console.log(wData[0].Country);
+            console.log(sData[0].Country);
+            var xMax = d3.max(
+                [
+                d3.max(wData, function (d) {
+                    return +d.GDP_per_Capita;
+                }),
+                d3.max(sData, function (d) {
+                    return +d.GDP_per_Capita;
+                })
+                ]);
+
+            svgS.append("text")
+            .attr("x", 300)
+            .attr("y", 50)
+            .style("text-anchor", "middle")
+            .text("Summer Medals Earned vs. GDP");
+            var yMaxS = d3.max(sData, function (d) {return +d.Medals});
+
+            var xScale = d3.scaleLinear()
+            .domain([0,xMax])
+            .range([100,width2-100]);
+
+            var yScaleS = d3.scaleLinear()
+            .domain([0, yMaxS])
+            .range([height2-100,100]);
+
+            var xAxis = d3.axisBottom(xScale);
+            var yAxis = d3.axisLeft(yScaleS);
+
+            svgS.append("g").call(xAxis).attr("transform","translate(0,500)");
+            svgS.append("g").call(yAxis).attr("transform","translate(100,0)");
+
+            sData.forEach(function (d, i) {
+                if(i<10) { //Top 10 Medal earning countries
+                    if (d.Country == "China") {
+                        svgS.append("line")
+                        .attr("x1", xScale(+d.GDP_per_Capita) + 20)
+                        .attr("x2", xScale(+d.GDP_per_Capita) + 30)
+                        .attr("y1", yScaleS(+d.Medals))
+                        .attr("y2", yScaleS(+d.Medals) - 3)
+                        .style("stroke", "black")
+                        .style("stroke-width", "1");
+
+                        svgS.append("image")
+                        .attr("x", xScale(+d.GDP_per_Capita))
+                        .attr("y", yScaleS(+d.Medals))
+                        .attr("xlink:href", "img/ByName/" + d.Country + ".png")
+                        .attr("width", 20);
+
+                        svgS.append("text")
+                        .text("China")
+                        .attr("x", xScale(+d.GDP_per_Capita) + 30)
+                        .attr("y", yScaleS(+d.Medals) - 3)
+                        .style("fill", "black")
+                        .style("font-size", "8px");
+                    }
+                    else {
+                    svgS.append("image")
+                        .attr("x", xScale(+d.GDP_per_Capita))
+                        .attr("y", yScaleS(+d.Medals))
+                        .attr("xlink:href", "img/ByName/" + d.Country + ".png")
+                        .attr("width", 20);
+                    }
+                }
+                else {
+                    svgS.append("circle")
+                    .attr("r", 2)
+                    .attr("cx", xScale(+d.GDP_per_Capita))
+                    .attr("cy", yScaleS(+d.Medals))
+                    .style("fill","black");
+                }
+            });
+
+            svgW.append("text")
+            .attr("x", 300)
+            .attr("y", 50)
+            .style("text-anchor", "middle")
+            .text("Winter Medals Earned vs. GDP");
+
+            var yMaxW = d3.max(wData, function (d) {return +d.Medals});
+
+
+            var yScaleW = d3.scaleLinear()
+            .domain([0, yMaxW])
+            .range([height2-100,100]);
+
+            var yAxisW = d3.axisLeft(yScaleW);
+
+
+            svgW.append("g").call(xAxis).attr("transform","translate(0,500)");
+            svgW.append("g").call(yAxisW).attr("transform","translate(100,0)");
+
+            wData.forEach(function (d, i) {
+                if(i<10) { //Top 10 Medal earning countries
+                    // Overlapped by Canada...
+                    if (d.Country == "Austria") {
+
+                        svgW.append("line")
+                        .attr("x1", xScale(+d.GDP_per_Capita) + 20)
+                        .attr("x2", xScale(+d.GDP_per_Capita) + 30)
+                        .attr("y1", yScaleW(+d.Medals))
+                        .attr("y2", yScaleW(+d.Medals) - 3)
+                        .style("stroke", "black")
+                        .style("stroke-width", "1");
+
+                        svgW.append("image")
+                        .attr("x", xScale(+d.GDP_per_Capita))
+                        .attr("y", yScaleW(+d.Medals))
+                        .attr("xlink:href", "img/ByName/" + d.Country + ".png")
+                        .attr("width", 20);
+
+                        svgW.append("text")
+                        .text("Austria")
+                        .attr("x", xScale(+d.GDP_per_Capita) + 30)
+                        .attr("y", yScaleW(+d.Medals) - 3)
+                        .style("fill", "black")
+                        .style("font-size", "8px");
+                    }
+                    else {
+                        svgW.append("image")
+                        .attr("x", xScale(+d.GDP_per_Capita))
+                        .attr("y", yScaleW(+d.Medals))
+                        .attr("xlink:href", "img/ByName/" + d.Country + ".png")
+                        .attr("width", 20);
+                    }
+
+
+                }
+                else {
+                    svgW.append("circle")
+                    .attr("r", 2)
+                    .attr("cx", xScale(+d.GDP_per_Capita))
+                    .attr("cy", yScaleW(+d.Medals))
+                    .style("fill","black");
+                }
+            })
+        }
+    </script>
+
+
 </body>
 
 
