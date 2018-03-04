@@ -44,8 +44,6 @@
 				}
 			});
 
-			console.log(totalMedals);
-
 			// here, subarr is an intermediary array to hold medal counts, which will be then be sorted
 			subarr = []
 			for (key in totalMedals) {
@@ -69,14 +67,9 @@
 				}
 			})
 
-			console.log(tenCounts);
-			console.log(tenCountries);
-
 			var pedScale = d3.scaleLinear()
               .domain([tenCounts[9], tenCounts[0]])
               .range([100, 400]);
-
-			console.log(pedScale(tenCounts[0]))
 
 			// 1st, place
 			svg.append("rect")
@@ -86,7 +79,7 @@
 			.attr("width", 98)
 			.style("fill", "#FFD700");
 			svg.append("image")
-			.attr("xlink:href", "flag1.png")
+			.attr("xlink:href", "img/flag1.png")
 			.attr("x", width/2 - 74/2)
 			.attr("y", height/2 - 320)
 			.attr("width", 74);
@@ -106,7 +99,7 @@
 			.attr("width", 98)
 			.style("fill", "#FFD700");
 			svg.append("image")
-			.attr("xlink:href", "flag2.png")
+			.attr("xlink:href", "img/flag2.png")
 			.attr("x", width/2 + 62)
 			.attr("y", height/2 - 180)
 			.attr("width", 74);
@@ -126,7 +119,7 @@
 			.attr("width", 98)
 			.style("fill", "#FFD700");
 			svg.append("image")
-			.attr("xlink:href", "flag3.png")
+			.attr("xlink:href", "img/flag3.png")
 			.attr("x", width/2 - 98*1.5 + 9)
 			.attr("y", height/2 - 175)
 			.attr("width", 74);
@@ -146,7 +139,7 @@
 			.attr("width", 290/7)
 			.style("fill", "#FFD700");
 			svg.append("image")
-			.attr("xlink:href", "flag4.png")
+			.attr("xlink:href", "img/flag4.png")
 			.attr("x", width/2 - 98*1.5 + 4)
 			.attr("y", height/2 + 370)
 			.attr("width", 290/7 - 10);
@@ -166,7 +159,7 @@
 			.attr("width", 290/7)
 			.style("fill", "#FFD700");
 			svg.append("image")
-			.attr("xlink:href", "flag5.png")
+			.attr("xlink:href", "img/flag5.png")
 			.attr("x", width/2 - 147 + 290/7 + 5)
 			.attr("y", height/2 + 300)
 			.attr("width", 290/7 - 10);
@@ -186,7 +179,7 @@
 			.attr("width", 290/7)
 			.style("fill", "#FFD700");
 			svg.append("image")
-			.attr("xlink:href", "flag6.png")
+			.attr("xlink:href", "img/flag6.png")
 			.attr("x", width/2 - 146 + (290/7)*2 + 5)
 			.attr("y", height/2 + 288)
 			.attr("width", 290/7 - 10);
@@ -206,7 +199,7 @@
 			.attr("width", 290/7)
 			.style("fill", "#FFD700");
 			svg.append("image")
-			.attr("xlink:href", "flag7.jpg")
+			.attr("xlink:href", "img/flag7.jpg")
 			.attr("x", width/2 - 146 + (290/7)*3 + 7)
 			.attr("y", height/2 + 285)
 			.attr("width", 290/7 - 10);
@@ -226,7 +219,7 @@
 			.attr("width", 290/7)
 			.style("fill", "#FFD700");
 			svg.append("image")
-			.attr("xlink:href", "flag8.png")
+			.attr("xlink:href", "img/flag8.png")
 			.attr("x", width/2 - 146 + (290/7)*4 + 7)
 			.attr("y", height/2 + 267)
 			.attr("width", 290/7 - 10);
@@ -246,7 +239,7 @@
 			.attr("width", 290/7)
 			.style("fill", "#FFD700");
 			svg.append("image")
-			.attr("xlink:href", "flag9.png")
+			.attr("xlink:href", "img/flag9.png")
 			.attr("x", width/2 - 146 + (290/7)*5 + 8)
 			.attr("y", height/2 + 265)
 			.attr("width", 290/7 - 10);
@@ -266,7 +259,7 @@
 			.attr("width", 290/7)
 			.style("fill", "#FFD700");
 			svg.append("image")
-			.attr("xlink:href", "flag10.png")
+			.attr("xlink:href", "img/flag10.png")
 			.attr("x", width/2 - 146 + (290/7)*6 + 9)
 			.attr("y", height/2 + 262)
 			.attr("width", 290/7 - 10);
