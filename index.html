@@ -14,7 +14,7 @@
 <!-- Background Image Courtesy of : https://www.elegantthemes.com/blog/freebie-of-the-week/20-free-background-images-for-wordpress
  -->
  <!-- https://www.crafthubs.com/olympic-patterns/12831 -->
-<body background="img/olympic-logo.png">
+<body background="img/background-blue-circles.jpg">
 	<p class="title"> What Makes A Country Great? </p>
 	<div id="container">
         <svg height="1000" width="1000" id="svg"></svg>
@@ -346,19 +346,19 @@
     <script id="GDPvMedals">
 
         var height2 = 600;
-        var width2  = 600;
+        var width2  = 1000;
 
         d3.select("body").append("br");
         var svgS = d3.select("body").append("svg")
         .attr("height", height2)
         .attr("width", width2)
-        .style("background-color", "#ff6600");
+        .style("background-color", "rgba(255, 180, 66, 0.9)");
 
         d3.select("body").append("br");
         var svgW = d3.select("body").append("svg")
         .attr("height", height2)
         .attr("width", width2)
-        .style("background-color", "#3366ff");
+        .style("background-color", "rgba(103, 200, 239, 0.9)");
 
         d3.queue()
         .defer(d3.csv, "winterGDPMedalData.csv")
@@ -385,10 +385,25 @@
                 ]);
 
             svgS.append("text")
-            .attr("x", 300)
+            .attr("x", 500)
             .attr("y", 50)
             .style("text-anchor", "middle")
-            .text("Summer Medals Earned vs. GDP");
+            .text("Summer")
+            .style("font-size", "36px");
+
+            svgS.append("text")
+            .attr("x", 500)
+            .attr("y", height2-50)
+            .style("text-anchor", "middle")
+            .text("GDP Per Capita");
+
+            svgS.append("text")
+            .attr("x", 50)
+            .attr("y", height2/2)
+            .style("text-anchor", "middle")
+            .text("Medals Earned (1986-2014)")
+            .attr("transform", "translate(-250,350)rotate(-90)");
+
             var yMaxS = d3.max(sData, function (d) {return +d.Medals});
 
             var xScale = d3.scaleLinear()
@@ -416,26 +431,18 @@
                         .style("stroke", "black")
                         .style("stroke-width", "1");
 
-                        svgS.append("image")
-                        .attr("x", xScale(+d.GDP_per_Capita))
-                        .attr("y", yScaleS(+d.Medals))
-                        .attr("xlink:href", "img/ByName/" + d.Country + ".png")
-                        .attr("width", 20);
-
                         svgS.append("text")
                         .text("China")
                         .attr("x", xScale(+d.GDP_per_Capita) + 30)
                         .attr("y", yScaleS(+d.Medals) - 3)
                         .style("fill", "black")
-                        .style("font-size", "8px");
+                        .style("font-size", "12px");
                     }
-                    else {
-                    svgS.append("image")
-                        .attr("x", xScale(+d.GDP_per_Capita))
-                        .attr("y", yScaleS(+d.Medals))
-                        .attr("xlink:href", "img/ByName/" + d.Country + ".png")
-                        .attr("width", 20);
-                    }
+                svgS.append("image")
+                    .attr("x", xScale(+d.GDP_per_Capita))
+                    .attr("y", yScaleS(+d.Medals))
+                    .attr("xlink:href", "img/ByName/" + d.Country + ".png")
+                    .attr("width", 30);
                 }
                 else {
                     svgS.append("circle")
@@ -447,10 +454,25 @@
             });
 
             svgW.append("text")
-            .attr("x", 300)
+            .attr("x", 500)
             .attr("y", 50)
             .style("text-anchor", "middle")
-            .text("Winter Medals Earned vs. GDP");
+            .text("Winter")
+            .style("font-size", "36px");
+
+            svgW.append("text")
+            .attr("x", 500)
+            .attr("y", height2-50)
+            .style("text-anchor", "middle")
+            .text("GDP Per Capita");
+
+            svgW.append("text")
+            .attr("x", 50)
+            .attr("y", height2/2)
+            .style("text-anchor", "middle")
+            .text("Medals Earned (1986-2014)")
+            .attr("transform", "translate(-250,350)rotate(-90)");
+
 
             var yMaxW = d3.max(wData, function (d) {return +d.Medals});
 
@@ -478,26 +500,18 @@
                         .style("stroke", "black")
                         .style("stroke-width", "1");
 
-                        svgW.append("image")
-                        .attr("x", xScale(+d.GDP_per_Capita))
-                        .attr("y", yScaleW(+d.Medals))
-                        .attr("xlink:href", "img/ByName/" + d.Country + ".png")
-                        .attr("width", 20);
-
                         svgW.append("text")
                         .text("Austria")
                         .attr("x", xScale(+d.GDP_per_Capita) + 30)
                         .attr("y", yScaleW(+d.Medals) - 3)
                         .style("fill", "black")
-                        .style("font-size", "8px");
+                        .style("font-size", "12px");
                     }
-                    else {
-                        svgW.append("image")
-                        .attr("x", xScale(+d.GDP_per_Capita))
-                        .attr("y", yScaleW(+d.Medals))
-                        .attr("xlink:href", "img/ByName/" + d.Country + ".png")
-                        .attr("width", 20);
-                    }
+                    svgW.append("image")
+                    .attr("x", xScale(+d.GDP_per_Capita))
+                    .attr("y", yScaleW(+d.Medals))
+                    .attr("xlink:href", "img/ByName/" + d.Country + ".png")
+                    .attr("width", 30);
 
 
                 }
