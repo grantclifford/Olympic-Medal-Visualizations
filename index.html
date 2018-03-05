@@ -27,7 +27,7 @@
         var svg = d3.select("#svg");
 
         // get the height/width of the svg element as variables
-        var width = document.getElementsByTagName("svg")[0].getAttribute("width");
+        var width  = document.getElementsByTagName("svg")[0].getAttribute("width");
         var height = document.getElementsByTagName("svg")[0].getAttribute("height");
 
         // json obj to hold all of the read-in files
@@ -116,7 +116,7 @@
 
             // Logo
             svg.append("image")
-            .attr("xlink:href", "olympic-logo.png")
+            .attr("xlink:href", "img/olympic-logo.png")
             .attr("x", topThreeScale(1) - 320)
             .attr("y", top)
             .attr("height", 500)
@@ -380,440 +380,444 @@
                     .attr("alignment-baseline", "central")
                     .attr("x", 500)
                     .attr("y", 600);
+
                     var svg = svg.append("g").attr("transform", "translate(50,50)");
                     var linearScaleX = d3.scaleLinear().domain([0,10]).range([0,900]);
                     var linearScaleY = d3.scaleLinear().domain([20,70]).range([500,0]);
                     var xAxis = d3.axisBottom(linearScaleX);
                     var yAxis = d3.axisLeft(linearScaleY);
                     var nations = ["", "Canada", "United States", "United Kingdom", "France", "Germany", "Italy", "Russia", "China", "South Korea", "Australia"];
+
                     svg.append("g")
                     .call(xAxis)
                     .attr("transform", "translate(0,500)")
                     .selectAll("text")
-            .text(function(d, i) { return nations[i] }); //Changes the x axis ticks to nations
-            svg.append("g")
-            .call(yAxis)
-            .attr("transform", "translate(0,0)");
-        var radius = 35; //radius of the pie charts are hard coded to a size that fits the visualization
-        //Winter data for each nation is stored as a variable
-        for (var d in winterData){
-            if (winterData[d].country == "United States"){
-                var USwinter = winterData[d]["count(*)"];
-            }
-            if (winterData[d].country == "Germany"){
-                var GERwinter = winterData[d]["count(*)"];
-            }
-            if (winterData[d].country == "Russia"){
-                var RUSwinter = winterData[d]["count(*)"];
-            }
-            if (winterData[d].country == "China"){
-                var CHIwinter = winterData[d]["count(*)"];
-            }
-            if (winterData[d].country == "France"){
-                var FRAwinter = winterData[d]["count(*)"];
-            }
-            if (winterData[d].country == "Italy"){
-                var ITAwinter = winterData[d]["count(*)"];
-            }
-            if (winterData[d].country == "Australia"){
-                var AUSwinter = winterData[d]["count(*)"];
-            }
-            if (winterData[d].country == "Korea, South"){
-                var KORwinter = winterData[d]["count(*)"];
-            }
-            if (winterData[d].country == "United Kingdom"){
-                var UKwinter = winterData[d]["count(*)"];
-            }
-            if (winterData[d].country == "Canada"){
-                var CANwinter = winterData[d]["count(*)"];
-            }
-        }
-        //Summer data for each nation is stored as a variable
-        for (var d in summerData){
-            if (summerData[d].country == "United States"){
-                var USsummer = summerData[d]["count(*)"];
-            }
-            if (summerData[d].country == "Germany"){
-                var GERsummer = summerData[d]["count(*)"];
-            }
-            if (summerData[d].country == "Russia"){
-                var RUSsummer = summerData[d]["count(*)"];
-            }
-            if (summerData[d].country == "China"){
-                var CHIsummer = summerData[d]["count(*)"];
-            }
-            if (summerData[d].country == "France"){
-                var FRAsummer = summerData[d]["count(*)"];
-            }
-            if (summerData[d].country == "Italy"){
-                var ITAsummer = summerData[d]["count(*)"];
-            }
-            if (summerData[d].country == "Australia"){
-                var AUSsummer = summerData[d]["count(*)"];
-            }
-            if (summerData[d].country == "Korea, South"){
-                var KORsummer = summerData[d]["count(*)"];
-            }
-            if (summerData[d].country == "United Kingdom"){
-                var UKsummer = summerData[d]["count(*)"];
-            }
-            if (summerData[d].country == "Canada"){
-                var CANsummer = summerData[d]["count(*)"];
-            }
-        }
-        //Latitude data for each nation is stored as a variable
-        for (var d in latData){
-            if (latData[d].country == "United States"){
-                var USlat = latData[d]["Latitude"];
-            }
-            if (latData[d].country == "Germany"){
-                var GERlat = latData[d]["Latitude"];
-            }
-            if (latData[d].country == "Russia"){
-                var RUSlat = latData[d]["Latitude"];
-            }
-            if (latData[d].country == "China"){
-                var CHIlat = latData[d]["Latitude"];
-            }
-            if (latData[d].country == "France"){
-                var FRAlat = latData[d]["Latitude"];
-            }
-            if (latData[d].country == "Italy"){
-                var ITAlat = latData[d]["Latitude"];
-            }
-            if (latData[d].country == "Australia"){
-                var AUSlat = latData[d]["Latitude"];
-            }
-            if (latData[d].country == "Korea, South"){
-                var KORlat = latData[d]["Latitude"];
-            }
-            if (latData[d].country == "United Kingdom"){
-                var UKlat = latData[d]["Latitude"];
-            }
-            if (latData[d].country == "Canada"){
-                var CANlat = latData[d]["Latitude"];
-            }
-        }
+                    .text(function(d, i) { return nations[i] }); //Changes the x axis ticks to nations
+                    svg.append("g")
+                    .call(yAxis)
+                    .attr("transform", "translate(0,0)");
+                    var radius = 35; //radius of the pie charts are hard coded to a size that fits the visualization
+                    //Winter data for each nation is stored as a variable
+                    for (var d in winterData){
+                        if (winterData[d].country == "United States"){
+                            var USwinter = winterData[d]["count(*)"];
+                        }
+                        if (winterData[d].country == "Germany"){
+                            var GERwinter = winterData[d]["count(*)"];
+                        }
+                        if (winterData[d].country == "Russia"){
+                            var RUSwinter = winterData[d]["count(*)"];
+                        }
+                        if (winterData[d].country == "China"){
+                            var CHIwinter = winterData[d]["count(*)"];
+                        }
+                        if (winterData[d].country == "France"){
+                            var FRAwinter = winterData[d]["count(*)"];
+                        }
+                        if (winterData[d].country == "Italy"){
+                            var ITAwinter = winterData[d]["count(*)"];
+                        }
+                        if (winterData[d].country == "Australia"){
+                            var AUSwinter = winterData[d]["count(*)"];
+                        }
+                        if (winterData[d].country == "Korea, South"){
+                            var KORwinter = winterData[d]["count(*)"];
+                        }
+                        if (winterData[d].country == "United Kingdom"){
+                            var UKwinter = winterData[d]["count(*)"];
+                        }
+                        if (winterData[d].country == "Canada"){
+                            var CANwinter = winterData[d]["count(*)"];
+                        }
+                    }
+                    //Summer data for each nation is stored as a variable
+                    for (var d in summerData){
+                        if (summerData[d].country == "United States"){
+                            var USsummer = summerData[d]["count(*)"];
+                        }
+                        if (summerData[d].country == "Germany"){
+                            var GERsummer = summerData[d]["count(*)"];
+                        }
+                        if (summerData[d].country == "Russia"){
+                            var RUSsummer = summerData[d]["count(*)"];
+                        }
+                        if (summerData[d].country == "China"){
+                            var CHIsummer = summerData[d]["count(*)"];
+                        }
+                        if (summerData[d].country == "France"){
+                            var FRAsummer = summerData[d]["count(*)"];
+                        }
+                        if (summerData[d].country == "Italy"){
+                            var ITAsummer = summerData[d]["count(*)"];
+                        }
+                        if (summerData[d].country == "Australia"){
+                            var AUSsummer = summerData[d]["count(*)"];
+                        }
+                        if (summerData[d].country == "Korea, South"){
+                            var KORsummer = summerData[d]["count(*)"];
+                        }
+                        if (summerData[d].country == "United Kingdom"){
+                            var UKsummer = summerData[d]["count(*)"];
+                        }
+                        if (summerData[d].country == "Canada"){
+                            var CANsummer = summerData[d]["count(*)"];
+                        }
+                    }
+                    //Latitude data for each nation is stored as a variable
+                    for (var d in latData){
+                        if (latData[d].country == "United States"){
+                            var USlat = latData[d]["Latitude"];
+                        }
+                        if (latData[d].country == "Germany"){
+                            var GERlat = latData[d]["Latitude"];
+                        }
+                        if (latData[d].country == "Russia"){
+                            var RUSlat = latData[d]["Latitude"];
+                        }
+                        if (latData[d].country == "China"){
+                            var CHIlat = latData[d]["Latitude"];
+                        }
+                        if (latData[d].country == "France"){
+                            var FRAlat = latData[d]["Latitude"];
+                        }
+                        if (latData[d].country == "Italy"){
+                            var ITAlat = latData[d]["Latitude"];
+                        }
+                        if (latData[d].country == "Australia"){
+                            var AUSlat = latData[d]["Latitude"];
+                        }
+                        if (latData[d].country == "Korea, South"){
+                            var KORlat = latData[d]["Latitude"];
+                        }
+                        if (latData[d].country == "United Kingdom"){
+                            var UKlat = latData[d]["Latitude"];
+                        }
+                        if (latData[d].country == "Canada"){
+                            var CANlat = latData[d]["Latitude"];
+                        }
+                    }
 
-        //Calculates the mean latitude for winning a summer medal
-        var meanSummerLat = (parseInt(USsummer)*parseInt(USlat) + parseInt(GERsummer)*parseInt(GERlat) + parseInt(RUSsummer)*parseInt(RUSlat) + parseInt(CHIsummer)*parseInt(CHIlat) + parseInt(FRAsummer)*parseInt(FRAlat) + parseInt(ITAsummer)*parseInt(ITAlat) +parseInt(AUSsummer)*parseInt(AUSlat) + parseInt(KORsummer)*parseInt(KORlat) + parseInt(UKsummer)*parseInt(UKlat) + parseInt(CANsummer)*parseInt(CANlat)) / (parseInt(USsummer) + parseInt(GERsummer) + parseInt(RUSsummer) + parseInt(CHIsummer) + parseInt(FRAsummer) + parseInt(ITAsummer) + parseInt(AUSsummer) + parseInt(KORsummer) + parseInt(UKsummer) + parseInt(CANsummer));
-        svg.append("line")
-        .attr("stroke", 'rgba(255, 180, 66, 1)')
-        .attr("x1",linearScaleX(0))
-        .attr("x2",linearScaleX(10))
-        .attr("y1",linearScaleY(meanSummerLat))
-        .attr("y2",linearScaleY(meanSummerLat));
-        svg.append("text")
-        .text("Mean Latitude For Summer Medal Win")
-        .attr("font-size", "12px")
-        .attr("text-anchor", "middle")
-        .attr("alignment-baseline", "central")
-        .attr("x",linearScaleX(9)-10)
-        .attr("y",linearScaleY(meanSummerLat)-8);
+                    //Calculates the mean latitude for winning a summer medal
+                    var meanSummerLat = (parseInt(USsummer)*parseInt(USlat) + parseInt(GERsummer)*parseInt(GERlat) + parseInt(RUSsummer)*parseInt(RUSlat) + parseInt(CHIsummer)*parseInt(CHIlat) + parseInt(FRAsummer)*parseInt(FRAlat) + parseInt(ITAsummer)*parseInt(ITAlat) +parseInt(AUSsummer)*parseInt(AUSlat) + parseInt(KORsummer)*parseInt(KORlat) + parseInt(UKsummer)*parseInt(UKlat) + parseInt(CANsummer)*parseInt(CANlat)) / (parseInt(USsummer) + parseInt(GERsummer) + parseInt(RUSsummer) + parseInt(CHIsummer) + parseInt(FRAsummer) + parseInt(ITAsummer) + parseInt(AUSsummer) + parseInt(KORsummer) + parseInt(UKsummer) + parseInt(CANsummer));
 
-        //Calculates the mean latitude for winning a winter medal
-        var meanWinterLat = (parseInt(USwinter)*parseInt(USlat) + parseInt(GERwinter)*parseInt(GERlat) + parseInt(RUSwinter)*parseInt(RUSlat) + parseInt(CHIwinter)*parseInt(CHIlat) + parseInt(FRAwinter)*parseInt(FRAlat) + parseInt(ITAwinter)*parseInt(ITAlat) +parseInt(AUSwinter)*parseInt(AUSlat) + parseInt(KORwinter)*parseInt(KORlat) + parseInt(UKwinter)*parseInt(UKlat) + parseInt(CANwinter)*parseInt(CANlat)) / (parseInt(USwinter) + parseInt(GERwinter) + parseInt(RUSwinter) + parseInt(CHIwinter) + parseInt(FRAwinter) + parseInt(ITAwinter) + parseInt(AUSwinter) + parseInt(KORwinter) + parseInt(UKwinter) + parseInt(CANwinter));
-        svg.append("line")
-        .attr("stroke", "rgba(103, 200, 239, 0.9)")
-        .attr("x1",linearScaleX(0))
-        .attr("x2",linearScaleX(10))
-        .attr("y1",linearScaleY(meanWinterLat))
-        .attr("y2",linearScaleY(meanWinterLat));
-        svg.append("text")
-        .text("Mean Latitude For Winter Medal Win")
-        .attr("font-size", "12px")
-        .attr("text-anchor", "middle")
-        .attr("alignment-baseline", "central")
-        .attr("x",linearScaleX(9)-10)
-        .attr("y",linearScaleY(meanWinterLat)-8);
+                    svg.append("line")
+                    .attr("stroke", 'rgba(255, 180, 66, 1)')
+                    .attr("x1",linearScaleX(0))
+                    .attr("x2",linearScaleX(10))
+                    .attr("y1",linearScaleY(meanSummerLat))
+                    .attr("y2",linearScaleY(meanSummerLat));
+                    svg.append("text")
+                    .text("Mean Latitude For Summer Medal Win")
+                    .attr("font-size", "12px")
+                    .attr("text-anchor", "middle")
+                    .attr("alignment-baseline", "central")
+                    .attr("x",linearScaleX(9)-10)
+                    .attr("y",linearScaleY(meanSummerLat)-8);
 
-        //Creates the color scale for the pie charts so that each pie chart has the same
-        //color scheme
-        var color = d3.scaleOrdinal()
-        .range(['rgba(103, 200, 239, 0.9)', 'rgba(255, 180, 66, 1)']);
+                    //Calculates the mean latitude for winning a winter medal
+                    var meanWinterLat = (parseInt(USwinter)*parseInt(USlat) + parseInt(GERwinter)*parseInt(GERlat) + parseInt(RUSwinter)*parseInt(RUSlat) + parseInt(CHIwinter)*parseInt(CHIlat) + parseInt(FRAwinter)*parseInt(FRAlat) + parseInt(ITAwinter)*parseInt(ITAlat) +parseInt(AUSwinter)*parseInt(AUSlat) + parseInt(KORwinter)*parseInt(KORlat) + parseInt(UKwinter)*parseInt(UKlat) + parseInt(CANwinter)*parseInt(CANlat)) / (parseInt(USwinter) + parseInt(GERwinter) + parseInt(RUSwinter) + parseInt(CHIwinter) + parseInt(FRAwinter) + parseInt(ITAwinter) + parseInt(AUSwinter) + parseInt(KORwinter) + parseInt(UKwinter) + parseInt(CANwinter));
 
-        //Plots the pie chart for the United States
-        var dataset = [{"label": "winter", "value": USwinter},
-        {"label": "summer", "value": parseInt(USsummer)/3}];
-        svg.append("line")
-        .attr("stroke", "gray")
-        .attr("x1",linearScaleX(2))
-        .attr("x2",linearScaleX(2))
-        .attr("y1",linearScaleY(parseInt(USlat)))
-        .attr("y2",linearScaleY(20))
-        .attr("stroke-dasharray", "5, 5");
-        var arc = d3.arc()
-        .innerRadius(0)
-        .outerRadius(radius);
-        var pie = d3.pie()
-        .value(function(d) { return d.value; })
-            .sort(null); //defines the pie function that is used to create each pie chart
-            var g = svg.append('g')
-            .attr('transform', 'translate(' + linearScaleX(2) +',' + linearScaleY(parseInt(USlat)) +')');
-            var path = g.selectAll('path')
-            .data(pie(dataset))
-            .enter()
-            .append('path')
-            .attr('d', arc)
-            .attr('fill', function(d, i) {
-                return color(d.data.label);
+                    svg.append("line")
+                    .attr("stroke", "rgba(103, 200, 239, 0.9)")
+                    .attr("x1",linearScaleX(0))
+                    .attr("x2",linearScaleX(10))
+                    .attr("y1",linearScaleY(meanWinterLat))
+                    .attr("y2",linearScaleY(meanWinterLat));
+                    svg.append("text")
+                    .text("Mean Latitude For Winter Medal Win")
+                    .attr("font-size", "12px")
+                    .attr("text-anchor", "middle")
+                    .attr("alignment-baseline", "central")
+                    .attr("x",linearScaleX(9)-10)
+                    .attr("y",linearScaleY(meanWinterLat)-8);
+
+                    //Creates the color scale for the pie charts so that each pie chart has the same
+                    //color scheme
+                    var color = d3.scaleOrdinal()
+                    .range(['rgba(103, 200, 239, 0.9)', 'rgba(255, 180, 66, 1)']);
+
+                    //Plots the pie chart for the United States
+                    var dataset = [{"label": "winter", "value": USwinter},
+                    {"label": "summer", "value": parseInt(USsummer)/3}];
+                    svg.append("line")
+                    .attr("stroke", "gray")
+                    .attr("x1",linearScaleX(2))
+                    .attr("x2",linearScaleX(2))
+                    .attr("y1",linearScaleY(parseInt(USlat)))
+                    .attr("y2",linearScaleY(20))
+                    .attr("stroke-dasharray", "5, 5");
+                    var arc = d3.arc()
+                    .innerRadius(0)
+                    .outerRadius(radius);
+                    var pie = d3.pie()
+                    .value(function(d) { return d.value; })
+                        .sort(null); //defines the pie function that is used to create each pie chart
+                        var g = svg.append('g')
+                        .attr('transform', 'translate(' + linearScaleX(2) +',' + linearScaleY(parseInt(USlat)) +')');
+                        var path = g.selectAll('path')
+                        .data(pie(dataset))
+                        .enter()
+                        .append('path')
+                        .attr('d', arc)
+                        .attr('fill', function(d, i) {
+                            return color(d.data.label);
+                        });
+
+                    //Plots the pie chart for Germany
+                    var dataset = [{"label": "winter", "value": GERwinter},
+                    {"label": "summer", "value": parseInt(GERsummer)/3}];
+                    svg.append("line")
+                    .attr("stroke", "gray")
+                    .attr("x1",linearScaleX(5))
+                    .attr("x2",linearScaleX(5))
+                    .attr("y1",linearScaleY(parseInt(GERlat)))
+                    .attr("y2",linearScaleY(20))
+                    .attr("stroke-dasharray", "5, 5");
+                    var arc = d3.arc()
+                    .innerRadius(0)
+                    .outerRadius(radius);
+                    var g = svg.append('g')
+                    .attr('transform', 'translate(' + linearScaleX(5) +',' + linearScaleY(parseInt(GERlat)) +')');
+                    var path = g.selectAll('path')
+                    .data(pie(dataset))
+                    .enter()
+                    .append('path')
+                    .attr('d', arc)
+                    .attr('fill', function(d, i) {
+                        return color(d.data.label);
+                    });
+
+                    //Plots the pie chart for Russia
+                    var dataset = [{"label": "winter", "value": RUSwinter},
+                    {"label": "summer", "value": parseInt(RUSsummer)/3}];
+                    svg.append("line")
+                    .attr("stroke", "gray")
+                    .attr("x1",linearScaleX(7))
+                    .attr("x2",linearScaleX(7))
+                    .attr("y1",linearScaleY(parseInt(RUSlat)))
+                    .attr("y2",linearScaleY(20))
+                    .attr("stroke-dasharray", "5, 5");
+                    var arc = d3.arc()
+                    .innerRadius(0)
+                    .outerRadius(radius);
+                    var g = svg.append('g')
+                    .attr('transform', 'translate(' + linearScaleX(7) +',' + linearScaleY(parseInt(RUSlat)) +')');
+                    var path = g.selectAll('path')
+                    .data(pie(dataset))
+                    .enter()
+                    .append('path')
+                    .attr('d', arc)
+                    .attr('fill', function(d, i) {
+                        return color(d.data.label);
+                    });
+
+                    //Plots the pie chart for China
+                    var dataset = [{"label": "winter", "value": CHIwinter},
+                    {"label": "summer", "value": parseInt(CHIsummer)/3}];
+                    svg.append("line")
+                    .attr("stroke", "gray")
+                    .attr("x1",linearScaleX(8))
+                    .attr("x2",linearScaleX(8))
+                    .attr("y1",linearScaleY(parseInt(CHIlat)))
+                    .attr("y2",linearScaleY(20))
+                    .attr("stroke-dasharray", "5, 5");
+                    var arc = d3.arc()
+                    .innerRadius(0)
+                    .outerRadius(radius);
+                    var g = svg.append('g')
+                    .attr('transform', 'translate(' + linearScaleX(8) +',' + linearScaleY(parseInt(CHIlat)) +')');
+                    var path = g.selectAll('path')
+                    .data(pie(dataset))
+                    .enter()
+                    .append('path')
+                    .attr('d', arc)
+                    .attr('fill', function(d, i) {
+                        return color(d.data.label);
+                    });
+
+                    //Plots the pie chart for France
+                    var dataset = [{"label": "winter", "value": FRAwinter},
+                    {"label": "summer", "value": parseInt(FRAsummer)/3}];
+                    svg.append("line")
+                    .attr("stroke", "gray")
+                    .attr("x1",linearScaleX(4))
+                    .attr("x2",linearScaleX(4))
+                    .attr("y1",linearScaleY(parseInt(FRAlat)))
+                    .attr("y2",linearScaleY(20))
+                    .attr("stroke-dasharray", "5, 5");
+                    var arc = d3.arc()
+                    .innerRadius(0)
+                    .outerRadius(radius);
+                    var g = svg.append('g')
+                    .attr('transform', 'translate(' + linearScaleX(4) +',' + linearScaleY(parseInt(FRAlat)) +')');
+                    var path = g.selectAll('path')
+                    .data(pie(dataset))
+                    .enter()
+                    .append('path')
+                    .attr('d', arc)
+                    .attr('fill', function(d, i) {
+                        return color(d.data.label);
+                    });
+
+                    //Plots the pie chart for Italy
+                    var dataset = [{"label": "winter", "value": ITAwinter},
+                    {"label": "summer", "value": parseInt(ITAsummer)/3}];
+                    svg.append("line")
+                    .attr("stroke", "gray")
+                    .attr("x1",linearScaleX(6))
+                    .attr("x2",linearScaleX(6))
+                    .attr("y1",linearScaleY(parseInt(ITAlat)))
+                    .attr("y2",linearScaleY(20))
+                    .attr("stroke-dasharray", "5, 5");
+                    var arc = d3.arc()
+                    .innerRadius(0)
+                    .outerRadius(radius);
+                    var g = svg.append('g')
+                    .attr('transform', 'translate(' + linearScaleX(6) +',' + linearScaleY(parseInt(ITAlat)) +')');
+                    var path = g.selectAll('path')
+                    .data(pie(dataset))
+                    .enter()
+                    .append('path')
+                    .attr('d', arc)
+                    .attr('fill', function(d, i) {
+                        return color(d.data.label);
+                    });
+
+                    //Plots the pie chart for Australia
+                    var dataset = [{"label": "winter", "value": AUSwinter},
+                    {"label": "summer", "value": parseInt(AUSsummer)/3}];
+                    svg.append("line")
+                    .attr("stroke", "gray")
+                    .attr("x1",linearScaleX(10))
+                    .attr("x2",linearScaleX(10))
+                    .attr("y1",linearScaleY(parseInt(AUSlat)))
+                    .attr("y2",linearScaleY(20))
+                    .attr("stroke-dasharray", "5, 5");
+                    var arc = d3.arc()
+                    .innerRadius(0)
+                    .outerRadius(radius);
+                    var g = svg.append('g')
+                    .attr('transform', 'translate(' + linearScaleX(10) +',' + linearScaleY(parseInt(AUSlat)) +')');
+                    var path = g.selectAll('path')
+                    .data(pie(dataset))
+                    .enter()
+                    .append('path')
+                    .attr('d', arc)
+                    .attr('fill', function(d, i) {
+                        return color(d.data.label);
+                    });
+
+                    //Plots the pie chart for South Korea
+                    var dataset = [{"label": "winter", "value": KORwinter},
+                    {"label": "summer", "value": parseInt(KORsummer)/3}];
+                    svg.append("line")
+                    .attr("stroke", "gray")
+                    .attr("x1",linearScaleX(9))
+                    .attr("x2",linearScaleX(9))
+                    .attr("y1",linearScaleY(parseInt(KORlat)))
+                    .attr("y2",linearScaleY(20))
+                    .attr("stroke-dasharray", "5, 5");
+                    var arc = d3.arc()
+                    .innerRadius(0)
+                    .outerRadius(radius);
+                    var g = svg.append('g')
+                    .attr('transform', 'translate(' + linearScaleX(9) +',' + linearScaleY(parseInt(KORlat)) +')');
+                    var path = g.selectAll('path')
+                    .data(pie(dataset))
+                    .enter()
+                    .append('path')
+                    .attr('d', arc)
+                    .attr('fill', function(d, i) {
+                        return color(d.data.label);
+                    });
+
+                    //Plots the pie chart for the United Kingdom
+                    var dataset = [{"label": "winter", "value": UKwinter},
+                    {"label": "summer", "value": parseInt(UKsummer)/3}];
+                    svg.append("line")
+                    .attr("stroke", "gray")
+                    .attr("x1",linearScaleX(3))
+                    .attr("x2",linearScaleX(3))
+                    .attr("y1",linearScaleY(parseInt(UKlat)))
+                    .attr("y2",linearScaleY(20))
+                    .attr("stroke-dasharray", "5, 5");
+                    var arc = d3.arc()
+                    .innerRadius(0)
+                    .outerRadius(radius);
+                    var g = svg.append('g')
+                    .attr('transform', 'translate(' + linearScaleX(3) +',' + linearScaleY(parseInt(UKlat)) +')');
+                    var path = g.selectAll('path')
+                    .data(pie(dataset))
+                    .enter()
+                    .append('path')
+                    .attr('d', arc)
+                    .attr('fill', function(d, i) {
+                        return color(d.data.label);
+                    });
+
+                    //Plots the pie chart for Canada
+                    var dataset = [{"label": "winter", "value": CANwinter},
+                    {"label": "summer", "value": parseInt(CANsummer)/3}];
+                    svg.append("line")
+                    .attr("stroke", "gray")
+                    .attr("x1",linearScaleX(1))
+                    .attr("x2",linearScaleX(1))
+                    .attr("y1",linearScaleY(parseInt(CANlat)))
+                    .attr("y2",linearScaleY(20))
+                    .attr("stroke-dasharray", "5, 5");
+                    var arc = d3.arc()
+                    .innerRadius(0)
+                    .outerRadius(radius);
+                    var g = svg.append('g')
+                    .attr('transform', 'translate(' + linearScaleX(1) +',' + linearScaleY(parseInt(CANlat)) +')');
+                    var path = g.selectAll('path')
+                    .data(pie(dataset))
+                    .enter()
+                    .append('path')
+                    .attr('d', arc)
+                    .attr('fill', function(d, i) {
+                        return color(d.data.label);
+                    });
+
+                    //the block of code below is to build the key for the visulization
+                    svg.append("rect")
+                    .attr("stroke", "black")
+                    .attr("fill", "white")
+                    .attr("x", linearScaleX(8))
+                    .attr("y", linearScaleY(65))
+                    .attr("width", linearScaleX(2))
+                    .attr("height", 80);
+                    svg.append("text")
+                    .text("Key").attr("text-anchor", "middle")
+                    .attr("alignment-baseline", "central")
+                    .attr("x", linearScaleX(9))
+                    .attr("y", linearScaleY(65)+10);
+                    svg.append("rect")
+                    .attr("fill", "rgba(103, 200, 239, 0.9)")
+                    .attr("x", linearScaleX(8)+15)
+                    .attr("y", linearScaleY(65)+27)
+                    .attr("width", 15).attr("height", 15);
+                    svg.append("text")
+                    .text("Winter Medals")
+                    .attr("text-anchor", "middle")
+                    .attr("alignment-baseline", "central")
+                    .attr("x", linearScaleX(9)+8)
+                    .attr("y", linearScaleY(65)+35);
+                    svg.append("rect")
+                    .attr("fill", "rgba(255, 180, 66, 1)")
+                    .attr("x", linearScaleX(8)+15)
+                    .attr("y", linearScaleY(65)+57)
+                    .attr("width", 15).attr("height", 15);
+                    svg.append("text")
+                    .text("Summer Medals")
+                    .attr("text-anchor", "middle")
+                    .attr("alignment-baseline", "central")
+                    .attr("x", linearScaleX(9)+12)
+                    .attr("y", linearScaleY(65)+65);
+                    GDPVis();
+                });
             });
-
-        //Plots the pie chart for Germany
-        var dataset = [{"label": "winter", "value": GERwinter},
-        {"label": "summer", "value": parseInt(GERsummer)/3}];
-        svg.append("line")
-        .attr("stroke", "gray")
-        .attr("x1",linearScaleX(5))
-        .attr("x2",linearScaleX(5))
-        .attr("y1",linearScaleY(parseInt(GERlat)))
-        .attr("y2",linearScaleY(20))
-        .attr("stroke-dasharray", "5, 5");
-        var arc = d3.arc()
-        .innerRadius(0)
-        .outerRadius(radius);
-        var g = svg.append('g')
-        .attr('transform', 'translate(' + linearScaleX(5) +',' + linearScaleY(parseInt(GERlat)) +')');
-        var path = g.selectAll('path')
-        .data(pie(dataset))
-        .enter()
-        .append('path')
-        .attr('d', arc)
-        .attr('fill', function(d, i) {
-            return color(d.data.label);
         });
-
-        //Plots the pie chart for Russia
-        var dataset = [{"label": "winter", "value": RUSwinter},
-        {"label": "summer", "value": parseInt(RUSsummer)/3}];
-        svg.append("line")
-        .attr("stroke", "gray")
-        .attr("x1",linearScaleX(7))
-        .attr("x2",linearScaleX(7))
-        .attr("y1",linearScaleY(parseInt(RUSlat)))
-        .attr("y2",linearScaleY(20))
-        .attr("stroke-dasharray", "5, 5");
-        var arc = d3.arc()
-        .innerRadius(0)
-        .outerRadius(radius);
-        var g = svg.append('g')
-        .attr('transform', 'translate(' + linearScaleX(7) +',' + linearScaleY(parseInt(RUSlat)) +')');
-        var path = g.selectAll('path')
-        .data(pie(dataset))
-        .enter()
-        .append('path')
-        .attr('d', arc)
-        .attr('fill', function(d, i) {
-            return color(d.data.label);
-        });
-
-        //Plots the pie chart for China
-        var dataset = [{"label": "winter", "value": CHIwinter},
-        {"label": "summer", "value": parseInt(CHIsummer)/3}];
-        svg.append("line")
-        .attr("stroke", "gray")
-        .attr("x1",linearScaleX(8))
-        .attr("x2",linearScaleX(8))
-        .attr("y1",linearScaleY(parseInt(CHIlat)))
-        .attr("y2",linearScaleY(20))
-        .attr("stroke-dasharray", "5, 5");
-        var arc = d3.arc()
-        .innerRadius(0)
-        .outerRadius(radius);
-        var g = svg.append('g')
-        .attr('transform', 'translate(' + linearScaleX(8) +',' + linearScaleY(parseInt(CHIlat)) +')');
-        var path = g.selectAll('path')
-        .data(pie(dataset))
-        .enter()
-        .append('path')
-        .attr('d', arc)
-        .attr('fill', function(d, i) {
-            return color(d.data.label);
-        });
-
-        //Plots the pie chart for France
-        var dataset = [{"label": "winter", "value": FRAwinter},
-        {"label": "summer", "value": parseInt(FRAsummer)/3}];
-        svg.append("line")
-        .attr("stroke", "gray")
-        .attr("x1",linearScaleX(4))
-        .attr("x2",linearScaleX(4))
-        .attr("y1",linearScaleY(parseInt(FRAlat)))
-        .attr("y2",linearScaleY(20))
-        .attr("stroke-dasharray", "5, 5");
-        var arc = d3.arc()
-        .innerRadius(0)
-        .outerRadius(radius);
-        var g = svg.append('g')
-        .attr('transform', 'translate(' + linearScaleX(4) +',' + linearScaleY(parseInt(FRAlat)) +')');
-        var path = g.selectAll('path')
-        .data(pie(dataset))
-        .enter()
-        .append('path')
-        .attr('d', arc)
-        .attr('fill', function(d, i) {
-            return color(d.data.label);
-        });
-
-        //Plots the pie chart for Italy
-        var dataset = [{"label": "winter", "value": ITAwinter},
-        {"label": "summer", "value": parseInt(ITAsummer)/3}];
-        svg.append("line")
-        .attr("stroke", "gray")
-        .attr("x1",linearScaleX(6))
-        .attr("x2",linearScaleX(6))
-        .attr("y1",linearScaleY(parseInt(ITAlat)))
-        .attr("y2",linearScaleY(20))
-        .attr("stroke-dasharray", "5, 5");
-        var arc = d3.arc()
-        .innerRadius(0)
-        .outerRadius(radius);
-        var g = svg.append('g')
-        .attr('transform', 'translate(' + linearScaleX(6) +',' + linearScaleY(parseInt(ITAlat)) +')');
-        var path = g.selectAll('path')
-        .data(pie(dataset))
-        .enter()
-        .append('path')
-        .attr('d', arc)
-        .attr('fill', function(d, i) {
-            return color(d.data.label);
-        });
-
-        //Plots the pie chart for Australia
-        var dataset = [{"label": "winter", "value": AUSwinter},
-        {"label": "summer", "value": parseInt(AUSsummer)/3}];
-        svg.append("line")
-        .attr("stroke", "gray")
-        .attr("x1",linearScaleX(10))
-        .attr("x2",linearScaleX(10))
-        .attr("y1",linearScaleY(parseInt(AUSlat)))
-        .attr("y2",linearScaleY(20))
-        .attr("stroke-dasharray", "5, 5");
-        var arc = d3.arc()
-        .innerRadius(0)
-        .outerRadius(radius);
-        var g = svg.append('g')
-        .attr('transform', 'translate(' + linearScaleX(10) +',' + linearScaleY(parseInt(AUSlat)) +')');
-        var path = g.selectAll('path')
-        .data(pie(dataset))
-        .enter()
-        .append('path')
-        .attr('d', arc)
-        .attr('fill', function(d, i) {
-            return color(d.data.label);
-        });
-
-        //Plots the pie chart for South Korea
-        var dataset = [{"label": "winter", "value": KORwinter},
-        {"label": "summer", "value": parseInt(KORsummer)/3}];
-        svg.append("line")
-        .attr("stroke", "gray")
-        .attr("x1",linearScaleX(9))
-        .attr("x2",linearScaleX(9))
-        .attr("y1",linearScaleY(parseInt(KORlat)))
-        .attr("y2",linearScaleY(20))
-        .attr("stroke-dasharray", "5, 5");
-        var arc = d3.arc()
-        .innerRadius(0)
-        .outerRadius(radius);
-        var g = svg.append('g')
-        .attr('transform', 'translate(' + linearScaleX(9) +',' + linearScaleY(parseInt(KORlat)) +')');
-        var path = g.selectAll('path')
-        .data(pie(dataset))
-        .enter()
-        .append('path')
-        .attr('d', arc)
-        .attr('fill', function(d, i) {
-            return color(d.data.label);
-        });
-
-        //Plots the pie chart for the United Kingdom
-        var dataset = [{"label": "winter", "value": UKwinter},
-        {"label": "summer", "value": parseInt(UKsummer)/3}];
-        svg.append("line")
-        .attr("stroke", "gray")
-        .attr("x1",linearScaleX(3))
-        .attr("x2",linearScaleX(3))
-        .attr("y1",linearScaleY(parseInt(UKlat)))
-        .attr("y2",linearScaleY(20))
-        .attr("stroke-dasharray", "5, 5");
-        var arc = d3.arc()
-        .innerRadius(0)
-        .outerRadius(radius);
-        var g = svg.append('g')
-        .attr('transform', 'translate(' + linearScaleX(3) +',' + linearScaleY(parseInt(UKlat)) +')');
-        var path = g.selectAll('path')
-        .data(pie(dataset))
-        .enter()
-        .append('path')
-        .attr('d', arc)
-        .attr('fill', function(d, i) {
-            return color(d.data.label);
-        });
-
-        //Plots the pie chart for Canada
-        var dataset = [{"label": "winter", "value": CANwinter},
-        {"label": "summer", "value": parseInt(CANsummer)/3}];
-        svg.append("line")
-        .attr("stroke", "gray")
-        .attr("x1",linearScaleX(1))
-        .attr("x2",linearScaleX(1))
-        .attr("y1",linearScaleY(parseInt(CANlat)))
-        .attr("y2",linearScaleY(20))
-        .attr("stroke-dasharray", "5, 5");
-        var arc = d3.arc()
-        .innerRadius(0)
-        .outerRadius(radius);
-        var g = svg.append('g')
-        .attr('transform', 'translate(' + linearScaleX(1) +',' + linearScaleY(parseInt(CANlat)) +')');
-        var path = g.selectAll('path')
-        .data(pie(dataset))
-        .enter()
-        .append('path')
-        .attr('d', arc)
-        .attr('fill', function(d, i) {
-            return color(d.data.label);
-        });
-
-        //the block of code below is to build the key for the visulization
-        svg.append("rect")
-        .attr("stroke", "black")
-        .attr("fill", "white")
-        .attr("x", linearScaleX(8))
-        .attr("y", linearScaleY(65))
-        .attr("width", linearScaleX(2))
-        .attr("height", 80);
-        svg.append("text")
-        .text("Key").attr("text-anchor", "middle")
-        .attr("alignment-baseline", "central")
-        .attr("x", linearScaleX(9))
-        .attr("y", linearScaleY(65)+10);
-        svg.append("rect")
-        .attr("fill", "rgba(103, 200, 239, 0.9)")
-        .attr("x", linearScaleX(8)+15)
-        .attr("y", linearScaleY(65)+27)
-        .attr("width", 15).attr("height", 15);
-        svg.append("text")
-        .text("Winter Medals")
-        .attr("text-anchor", "middle")
-        .attr("alignment-baseline", "central")
-        .attr("x", linearScaleX(9)+8)
-        .attr("y", linearScaleY(65)+35);
-        svg.append("rect")
-        .attr("fill", "rgba(255, 180, 66, 1)")
-        .attr("x", linearScaleX(8)+15)
-        .attr("y", linearScaleY(65)+57)
-        .attr("width", 15).attr("height", 15);
-        svg.append("text")
-        .text("Summer Medals")
-        .attr("text-anchor", "middle")
-        .attr("alignment-baseline", "central")
-        .attr("x", linearScaleX(9)+12)
-        .attr("y", linearScaleY(65)+65);
-        GDPVis();
-    });
-});
-});
 
 </script>
 
@@ -822,10 +826,12 @@
         var height2 = 600;
         var width2  = 1000;
 
+        //SVG element for summer olympics
         var svgS = d3.select("body").append("svg")
         .attr("height", height2)
         .attr("width", width2);
 
+        //SVG element for winter olympics
         var svgW = d3.select("body").append("svg")
         .attr("height", height2)
         .attr("width", width2);
@@ -837,6 +843,7 @@
 
         function showGraph(error, wData, sData) {
 
+            //Sort descending by medal count
             wData.sort(function(a, b){ return b.Medals - a.Medals});
             sData.sort(function(a, b){ return b.Medals - a.Medals});
 
@@ -888,7 +895,7 @@
 
             sData.forEach(function (d, i) {
                 if(i<10) { //Top 10 Medal earning countries
-                    if (d.Country == "China") {
+                    if (d.Country == "China") { //Overlap with another country, adding annotation
                         svgS.append("line")
                         .attr("x1", xScale(+d.GDP_per_Capita) + 20)
                         .attr("x2", xScale(+d.GDP_per_Capita) + 30)
@@ -955,7 +962,7 @@
 
             wData.forEach(function (d, i) {
                 if(i<10) { //Top 10 Medal earning countries
-                    // Overlapped by Canada...
+                    // Overlapped by Canada
                     if (d.Country == "Austria") {
 
                         svgW.append("line")
